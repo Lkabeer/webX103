@@ -1,0 +1,12 @@
+* {
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
