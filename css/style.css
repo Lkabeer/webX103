@@ -3,10 +3,7 @@
     transition: all 0.3s ease-in-out 0s;
 }
 
-html, body {
-    height: 100%;
-}
-
 body {
+    height: 100vh;
     margin: 0;
 }

@@ -1,6 +1,6 @@
 var addFormX = document.getElementById('addFormX');
 var membersX = document.getElementById('membersX');
-var newMember = document.getElementById('newMemberX')
+var newMemberX = document.getElementById('newMemberX')
 var filterX = document.getElementById('filterX');
 
 // X-Team Events
@@ -13,8 +13,8 @@ function addMember(e) {
     e.preventDefault();
     var li = document.createElement('li');
     li.className = 'list-group-item';
-    li.textContent = newMember.value;
-    newMember.value = '';
+    li.textContent = newMemberX.value;
+    newMemberX.value = '';
 
     var deleteBtn = document.createElement('button');
     deleteBtn.className = 'btn btn-danger btn-sm float-right deleteX';
@@ -26,8 +26,8 @@ function addMember(e) {
 
 // Remove Member 
 function removeMember(e) {
-    if(e.target.classList.contains('deleteX')) {
-        if(confirm('Anta mot2kd Yasta mn 2lly bt3mloh?!')) {
+    if (e.target.classList.contains('deleteX')) {
+        if (confirm('Anta mot2kd Yasta mn 2lly bt3mloh?!')) {
             var li = e.target.parentElement;
             membersX.removeChild(li);
         }
@@ -39,12 +39,12 @@ function filterMembers(e) {
     var textX = e.target.value.toLowerCase();
     var membersListX = membersX.getElementsByTagName('li');
 
-    Array.from(membersListX).forEach(function(member) {
-        var memberName = member.firstChild.textContent;
-        if(memberName.toLowerCase().indexOf(textX) != -1) {
+    for (let member of membersListX) {
+        let memberName = member.firstChild.textContent;
+        if (memberName.toLowerCase().indexOf(textX) != -1) {
             member.style.display = 'block';
         } else {
             member.style.display = 'none';
         }
-    });
+    }
 }
