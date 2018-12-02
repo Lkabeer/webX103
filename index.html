@@ -1,61 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Yasta | X-Team &#12484;</title>
-        <link rel="shortcut icon" href="assets/favIcon.png" type="image/png">
 
-        <!-- AOS -->
-        <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
-        <!-- <link rel="stylesheet" href="css/aos.css"> -->
-        
-        <!-- Bootstrap4X -->
-        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Yasta | X-Team &#12484;</title>
+    <link rel="shortcut icon" href="assets/favIcon.png" type="image/png">
 
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-    </head>
-    <body>
-        <header id="headerX" class="bg-primary text-white p-4 mb-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h1 id="header-titleX">X-Team <small>members &#12484;</small></h1>
-                    </div>
-                    <div class="col-md-6 align-self-center">
-                        <input type="text" class="form-control" id="filterX" placeholder="Search member...">
-                    </div>
+    <!-- CDNs X-Team -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+
+    <!-- <link rel="stylesheet" href="css/aos.css"> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header id="headerX" class="bg-primary text-white p-4 mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 id="header-titleX">X-Team's <small>PhoneBook &#12484;</small></h1>
+                </div>
+                <div class="col-md-6 align-self-center">
+                    <input type="text" class="form-control" id="filterX" placeholder="Search contact...">
                 </div>
             </div>
-        </header>
-
-        <div class="container">
-            <div id="mainX" class="card card-body">
-                <h2 class="titleX">Add New Member yasta</h2>
-                <form id="addFormX" class="form-inline mb-3 justify-content-between">
-                    <input type="text" class="col-sm-7 form-control mb-2" id="newMemberX">
-                    <input type="submit" class="col-sm-4 btn btn-dark" value="Add Yasta">
-                </form>
-                <h2 class="titleX">Members</h2>
-                <ul id="membersX" class="list-group">
-                    <!-- <li class="list-group-item">Ahmed Samir -->
-                        <!-- <button class="btn btn-danger btn-sm float-right deleteX">X</button> -->
-                    <!-- </li> -->
-                    <!-- <li class="list-group-item">Hala Habib -->
-                        <!-- <button class="btn btn-danger btn-sm float-right deleteX">X</button> -->
-                    <!-- </li> -->
-                </ul>
-            </div>
         </div>
+    </header>
 
-        <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
-        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <div class="container">
+        <div id="mainX" class="card card-body">
+
+            <h2 class="mb-3">Add New Contact yasta</h2>
+            <form id="addFormX">
+                <div class="form-group form-inline justify-content-between">
+                    <label for="nameX" class="">Name: </label>
+                    <input type="text" name="nameX" id="nameX" class="form-control col-9" placeholder="Contact's name">
+                </div>
+
+                <div class="form-group form-inline justify-content-between">
+                    <label for="mobileX" class="">Mobile: </label>
+                    <input type="text" name="mobileX" id="mobileX" class="form-control col-9" placeholder="01xx-xxx-xxxx">
+                </div>
+
+                <div class="form-group form-inline justify-content-between">
+                    <label for="emailX" class="">Email: </label>
+                    <input type="text" name="emailX" id="emailX" class="form-control col-9" placeholder="Contact's Email">
+                </div>
+
+                <div class="form-group form-inline justify-content-between">
+                    <label for="saveX" class=""></label>
+                    <input type="submit" name="saveX" id="saveX" class="form-control col-9 btn btn-dark" value="Save">
+                </div>
+            </form>
+
+            <h2 class="titleX mb-3">Contacts</h2>
+            <div id="contactsX" class="row">
+                <!-- <section class="col-sm-6 text-center"> -->
+                    <!-- <div class="card p-3 mb-3"> -->
+                        <!-- <h4 class="card-title"> -->
+                            <!-- Ahmed Samir -->
+                            <!-- <button class="btn btn-danger btn-sm float-right font-weight-bold">X</button> -->
+                        <!-- </h4> -->
+                        <!-- <p class="card-text">01000 8600 85</p> -->
+                        <!-- <p class="card-text">ahmed@frontendX.team</p> -->
+                    <!-- </div> -->
+                <!-- </section> -->
+            </div>
+
+        </div>
+    </div>
+
+    <footer id="footerX" class="bg-primary text-white">
+        <div class="container" style="line-height: 1em;">
+            <span class="small">&copy; X-Team &#12484;</span>
+        </div>
+    </footer>
+
+    <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
-        <!-- <script src="js/aos.js"></script> -->
+    <!-- <script src="js/aos.js"></script> -->
 
-        <script src="js/script.js" defer></script>
-    </body>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/dataX.json"></script>
+    <script src="js/script.js" defer></script>
+</body>
+
 </html>

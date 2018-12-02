@@ -1,0 +1,27 @@
+[
+    {
+        "name": "X-Team",
+        "mobile": "02-1000 8600 58",
+        "email": "info@frontendX.team"
+    },
+    {
+        "name": "Ahmed Samir",
+        "mobile": "02-1000 8600 58",
+        "email": "Ahmed@frontendX.team"
+    },
+    {
+        "name": "Hala Samir",
+        "mobile": "02-1000 000 00",
+        "email": "Hala@frontendX.team"
+    },
+    {
+        "name": "Ahmed Osama",
+        "mobile": "02-1000 0000 00",
+        "email": "Osama@frontendX.team"
+    },
+    {
+        "name": "Ahmed Mostafa",
+        "mobile": "02-1000 0000 00",
+        "email": "Mostafa@frontendX.team"
+    }
+]

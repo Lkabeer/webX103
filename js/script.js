@@ -1,106 +1,120 @@
 // X-Team Selectors
 var addFormX = document.getElementById('addFormX');
-var membersX = document.getElementById('membersX');
-var newMemberX = document.getElementById('newMemberX')
+var contactsX = document.getElementById('contactsX');
+
+var nameX = document.getElementById('nameX');
+var mobileX = document.getElementById('mobileX');
+var emailX = document.getElementById('emailX');
 var filterX = document.getElementById('filterX');
 
-var membersArray = ['X-Team', 'Ahmed Samir'];
+var contactsJson = [];
 
 // X-Team Events
-addFormX.addEventListener('submit', addMember);
+addFormX.addEventListener('submit', addContact);
 filterX.addEventListener('keyup', filterMembers);
 
-// Read Members
-function readMembers() {
-
-    resetMembersView();
-
-    for (let i = 0; i < membersArray.length; ++i) {
-
-        let li = document.createElement('li');
-        li.className = 'list-group-item';
-        li.textContent = membersArray[i];
-
-        let deleteBtn = document.createElement('button');
-        deleteBtn.className = 'btn btn-danger btn-sm float-right deleteX';
-        deleteBtn.textContent = 'X';
-
-        let editBtn = document.createElement('button');
-        editBtn.className = 'btn btn-primary btn-sm float-right mr-2 editX';
-        editBtn.textContent = 'Edit';
-
-        li.appendChild(deleteBtn);
-        li.appendChild(editBtn);
-        membersX.appendChild(li);
-
-        // Remove Member 
-        deleteBtn.onclick = function () {
-            if (confirm('Anta mot2kd Yasta mn 2lly bt3mloh?!')) {
-                membersArray.splice(i, 1);
-                console.log(membersArray);
-            }
-            readMembers();
-        }
-
-        // Edit Member 
-        editBtn.addEventListener('click', editMember);
-
-        function editMember() {
-            editBtn.removeEventListener('click', editMember);
-
-            var textX = membersX.children[i].firstChild.textContent;
-            membersX.children[i].firstChild.textContent = '';
-
-            let editInput = document.createElement('input');
-            editInput.className = 'col-sm-7 form-control';
-            editInput.value = textX;
-            li.appendChild(editInput);
-            editInput.focus();
-
-            // Save Member
-            editInput.addEventListener("keydown", saveMember)
-
-            function saveMember(e) {
-                if (e.keyCode === 13) {
-                    membersArray.splice(i, 1, editInput.value);
-                    readMembers();
-                }
-            }
-        }
+// Class Contact X-Team
+class Contact {
+    constructor(name, mobile, email) {
+        this.name = name;
+        this.mobile = mobile;
+        this.email = email;
     }
 }
 
-// Reset Members View 
-function resetMembersView() {
-    membersX.innerHTML = '';
+// Load Data from JSON File
+function loadData() {
+    $.getJSON("js/dataX.json", function (data) {
+        contactsJson = data;
+        // console.log(contactsJson);
+
+        readContacts();
+    });
 }
 
-// Add Member 
-function addMember(e) {
+// List Contacts X-Team 
+function readContacts() {
+    contactsX.innerHTML = '';
+
+    for (let i = 0; i < contactsJson.length; ++i) {
+        createContactView(contactsJson[i], i);
+    }
+}
+
+// Create Contact X-Team
+function createContactView(newContact, i) {
+
+    let newContactX = new Contact(newContact.name, newContact.mobile, newContact.email);
+    // console.log(newContactX);
+
+    let sectionContact = document.createElement('section');
+    sectionContact.classList = 'col-sm-6 text-center';
+    contactsX.appendChild(sectionContact);
+
+    let divContact = document.createElement('div');
+    divContact.className = "card p-3 mb-3";
+    sectionContact.appendChild(divContact);
+
+    let nameX = document.createElement('h4');
+    nameX.className = "card-title";
+    nameX.appendChild(document.createTextNode(newContactX.name));
+    divContact.appendChild(nameX);
+
+    let removeButton = document.createElement('button');
+    removeButton.className = "btn btn-danger btn-sm float-right font-weight-bold";
+    removeButton.appendChild(document.createTextNode('X'));
+    nameX.appendChild(removeButton);
+
+    let phoneX = document.createElement('p');
+    phoneX.className = "card-text";
+    phoneX.appendChild(document.createTextNode(newContactX.mobile));
+    divContact.appendChild(phoneX);
+
+    let emailX = document.createElement('p');
+    emailX.className = "card-text";
+    emailX.appendChild(document.createTextNode(newContactX.email));
+    divContact.appendChild(emailX);
+
+    // Remove Member 
+    removeButton.onclick = function () {
+        if (confirm('Anta mot2kd Yasta mn 2lly bt3mloh?!')) {
+            contactsJson.splice(i, 1);
+            readContacts();
+        }
+    }
+
+}
+
+// Add new Contact X-Team 
+function addContact(e) {
     e.preventDefault();
 
-    membersArray.push(newMemberX.value);
-    newMemberX.value = '';
-    console.log(membersArray);
+    let newContactX = new Contact(nameX.value, mobileX.value, emailX.value);
+    nameX.value = '';
+    mobileX.value = '';
+    emailX.value = '';
 
-    readMembers();
+    contactsJson.push(newContactX);
+    readContacts();
 }
 
 // Filter Members
 function filterMembers(e) {
     var searchX = e.target.value.toLowerCase();
-    var membersListX = membersX.getElementsByTagName('li');
+    var contactsListX = contactsX.querySelectorAll('section');
 
-    for (let member of membersListX) {
-        console.log(member.firstChild);
-        let memberName = member.firstChild.textContent;
-        if (memberName.toLowerCase().indexOf(searchX) != -1) {
-            member.style.display = 'block';
+    for (let contact of contactsListX) {
+        let contactName = contact.querySelector('h4').firstChild.textContent;
+        console.log(contactName);
+        if (contactName.toLowerCase().indexOf(searchX) != -1) {
+            contact.style.display = 'block';
         } else {
-            member.style.display = 'none';
+            contact.style.display = 'none';
         }
     }
 }
 
-// Start AppX 
-readMembers();
+// Start App X-Team
+$(function () {
+    loadData();
+});
